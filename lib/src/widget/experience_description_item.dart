@@ -24,11 +24,11 @@ class ExperienceDescriptionItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: context.textTheme.titleMedium),
+            Text(title, style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 8),
-            Text(description, style: context.textTheme.bodyMedium),
+            Text(description, style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 8),
-            Text(period, style: context.textTheme.bodySmall?.copyWith(color: context.colorScheme.primary)),
+            Text(period, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: context.colorScheme.primary)),
           ],
         ),
       ),
