@@ -8,7 +8,11 @@ export 'model/experiences_model.dart';
 //
 export 'cubit/experinenes_cubit.dart';
 export 'cubit/experinenes_state.dart';
+//
 export 'extensions.dart';
 export 'desktop_experiences_body.dart';
 export 'mobile_experiences_body.dart';
 export 'curved_line_painter.dart';
+//
+export 'experiences_timeline.dart';
+export "presentation/experienes_body.dart";
