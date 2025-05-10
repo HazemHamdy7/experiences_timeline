@@ -4,25 +4,6 @@ import 'package:experiences_timeline/src/widget/experence_item.dart';
 import 'package:experiences_timeline/src/widget/extensions.dart';
 import 'package:flutter/material.dart';
 
-// تعريف قائمة الـ experiences
-final List<ExperienceModel> experiences = [
-  ExperienceModel(
-    title: 'Title 1',
-    company: 'Company 1',
-    description: 'Description 1',
-    date: '2023-01-01',
-    color: Colors.blue,
-  ),
-  ExperienceModel(
-    title: 'Title 2',
-    company: 'Company 2',
-    description: "Description 2",
-    date: '2023-02-01',
-    color: Colors.green,
-  ),
-  // أضف باقي العناصر هنا
-];
-
 const expLen = 6;
 const expPointsSize = 16.0;
 const expScaleFactor = 150.0;
@@ -44,9 +25,9 @@ class DesktopExperiencesTimeline extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  context.colorScheme.primary.withOpacity(0),
+                  context.colorScheme.primary.withValues(alpha: 0),
                   context.colorScheme.primary,
-                  context.colorScheme.primary.withOpacity(0),
+                  context.colorScheme.primary.withValues(alpha: 0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -114,14 +95,14 @@ class DesktopExperiencesTimeline extends StatelessWidget {
               height: expPointsSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: context.colorScheme.onBackground.withOpacity(0.24),
+                color: context.colorScheme.onSurface.withValues(alpha: 0.24),
               ),
               child: Container(
                 width: expPointsSize / 2,
                 height: expPointsSize / 2,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: context.colorScheme.onBackground.withOpacity(0.8),
+                  color: context.colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
               ),
             ),

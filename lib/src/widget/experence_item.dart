@@ -24,7 +24,7 @@ class ExperienceItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color: context.colorScheme.onBackground,
+                color: context.colorScheme.onSurface,
               ),
               textAlign: isArabic ? TextAlign.right : TextAlign.left,
             ),

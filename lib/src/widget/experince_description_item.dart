@@ -16,7 +16,7 @@ class ExperienceDescriptionItem extends StatelessWidget {
           height: 4,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: context.colorScheme.onBackground,
+            color: context.colorScheme.onSurface,
           ),
         ),
         SizedBox(width: 8),
@@ -28,7 +28,7 @@ class ExperienceDescriptionItem extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w400,
-              color: context.colorScheme.onBackground,
+              color: context.colorScheme.onSurface,
             ),
           ),
         ),

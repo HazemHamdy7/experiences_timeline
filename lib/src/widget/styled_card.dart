@@ -1,7 +1,7 @@
 import 'package:experiences_timeline/src/widget/curved_line_painter.dart';
 import 'package:experiences_timeline/src/widget/extensions.dart';
 import 'package:flutter/material.dart';
- 
+
 class StyledCard extends StatefulWidget {
   const StyledCard({
     super.key,
@@ -74,7 +74,7 @@ class _BorderShadow extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(24)),
         boxShadow: [
           BoxShadow(
-            color: context.colorScheme.primary.withOpacity(0.5),
+            color: context.colorScheme.primary.withValues(alpha: 0.5),
             blurRadius: 10,
             spreadRadius: 3,
           ),
