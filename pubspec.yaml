@@ -11,9 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   dotted_line: ^3.2.3
-  flutter_bloc: ^9.1.0
-  bloc_test: ^9.0.4
-  
   gap: ^3.0.1
 
 dev_dependencies:

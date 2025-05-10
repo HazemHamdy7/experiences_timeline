@@ -1,8 +1,8 @@
-import 'package:experiences_timeline/src/curved_line_painter.dart';
-import 'package:experiences_timeline/src/extensions.dart';
+import 'package:experiences_timeline/src/widget/curved_line_painter.dart';
+import 'package:experiences_timeline/src/widget/extensions.dart';
 import 'package:flutter/material.dart';
  
-class StyledCard extends StatelessWidget {
+class StyledCard extends StatefulWidget {
   const StyledCard({
     super.key,
     this.width,
@@ -19,32 +19,44 @@ class StyledCard extends StatelessWidget {
   final BorderRadius? borderRadius;
   final Widget child;
   final bool borderEffect;
+  @override
+  State<StyledCard> createState() => _StyledCardState();
+}
 
+class _StyledCardState extends State<StyledCard> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        if (borderEffect) ...[
-          const _BorderShadow(),
-          Positioned(bottom: 0, right: 0, child: const _BorderShadow()),
+        if (widget.borderEffect) ...[
+          _BorderShadow(),
+          Positioned(
+            // This is the shadow effect that is added to the card
+            bottom: 0,
+            right: 0,
+            child: const _BorderShadow(),
+          ),
         ],
+
         Container(
-          width: width,
-          height: height,
-          padding: padding ?? EdgeInsets.all(16),
+          width: widget.width,
+          height: widget.height,
+
+          padding: widget.padding ?? EdgeInsets.all(16),
           decoration: BoxDecoration(
             border: Border.all(color: context.colorScheme.outline),
             color: context.colorScheme.surface,
             borderRadius:
-                borderRadius ?? const BorderRadius.all(Radius.circular(24)),
+                widget.borderRadius ?? BorderRadius.all(Radius.circular(24)),
           ),
-          child: child,
+          child: widget.child,
         ),
-        if (borderEffect)
+        if (widget.borderEffect) ...[
           CustomPaint(
-            size: Size(width ?? 0, height ?? 0),
+            size: Size(widget.width ?? 0, widget.height ?? 0),
             painter: CurvedLinePainter(color: context.colorScheme.primary),
           ),
+        ],
       ],
     );
   }
@@ -59,7 +71,7 @@ class _BorderShadow extends StatelessWidget {
       width: 60,
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        borderRadius: BorderRadius.all(Radius.circular(24)),
         boxShadow: [
           BoxShadow(
             color: context.colorScheme.primary.withOpacity(0.5),
