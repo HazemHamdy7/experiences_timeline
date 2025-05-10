@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.0.2] - 2025-05-10
+## [0.0.3] - 2025-05-10
 - Add tests for `ExperienceModel` class.
 - Improve mobile and desktop layout responsiveness.
 - Minor bug fixes and performance improvements.
