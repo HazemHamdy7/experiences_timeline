@@ -1,7 +1,8 @@
 name: experiences_timeline
-description: "A Flutter package for creating interactive experiences timeline with customizable UI components Ok."
+description: "A Flutter package for creating interactive experiences timeline with customizable UI components."
 version: 0.0.1
 homepage: https://github.com/HazemHamdy7/experiences_timeline
+
 
 environment:
   sdk: ^3.7.0
