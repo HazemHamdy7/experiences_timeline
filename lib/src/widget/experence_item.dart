@@ -6,22 +6,35 @@ import 'package:flutter/material.dart';
 
 class ExperienceItem extends StatelessWidget {
   final ExperienceModel experienceModel;
+  final double? width;
+  final double? height;
+  final EdgeInsets? padding;
+  final BorderRadius? borderRadius;
 
-  const ExperienceItem({super.key, required this.experienceModel});
+  const ExperienceItem({
+    super.key,
+    required this.experienceModel,
+    this.width = 330,
+    this.height = 230,
+    this.padding,
+    this.borderRadius,
+  });
 
   @override
   Widget build(BuildContext context) {
     final isArabic = Localizations.localeOf(context).languageCode == 'en';
     return StyledCard(
-      width: 330,
-      height: 230,
+      width: width,
+      height: height,
+      padding: padding,
+      borderRadius: borderRadius,
       borderEffect: true,
       child: Card(
         child: Column(
           children: [
             Text(
               experienceModel.title,
-              style: TextStyle(
+              style: experienceModel.titleStyle ?? TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: context.colorScheme.onSurface,
@@ -31,7 +44,9 @@ class ExperienceItem extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  ExperienceDescriptionItem(experiencesModel: experienceModel),
+                  ExperienceDescriptionItem(
+                    experiencesModel: experienceModel,
+                  ),
                 ],
               ),
             ),

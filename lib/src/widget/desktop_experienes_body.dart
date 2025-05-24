@@ -4,13 +4,27 @@ import 'package:experiences_timeline/src/widget/experence_item.dart';
 import 'package:experiences_timeline/src/widget/extensions.dart';
 import 'package:flutter/material.dart';
 
-const expLen = 6;
 const expPointsSize = 16.0;
 const expScaleFactor = 150.0;
 const expPonitFactor = 230 / 2 - expPointsSize / 2;
 
 class DesktopExperiencesTimeline extends StatelessWidget {
-  const DesktopExperiencesTimeline({super.key});
+  final List<ExperienceModel> experiences;
+  final double? cardWidth;
+  final double? cardHeight;
+  final EdgeInsets? cardPadding;
+  final BorderRadius? cardBorderRadius;
+  final Color? lineColor;
+
+  const DesktopExperiencesTimeline({
+    super.key,
+    required this.experiences,
+    this.cardWidth,
+    this.cardHeight,
+    this.cardPadding,
+    this.cardBorderRadius,
+    this.lineColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +39,9 @@ class DesktopExperiencesTimeline extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  context.colorScheme.primary.withValues(alpha: 0),
-                  context.colorScheme.primary,
-                  context.colorScheme.primary.withValues(alpha: 0),
+                  (lineColor ?? context.colorScheme.primary).withValues(alpha: 0),
+                  lineColor ?? context.colorScheme.primary,
+                  (lineColor ?? context.colorScheme.primary).withValues(alpha: 0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -35,7 +49,7 @@ class DesktopExperiencesTimeline extends StatelessWidget {
             ),
           ),
         ),
-        for (int i = 0; i < experiences.length; i++) ...[
+        for (int i = 0; i < experiences.length; i++) ...[          
           if (i.isEven)
             Positioned(
               top: i * expScaleFactor,
@@ -45,11 +59,16 @@ class DesktopExperiencesTimeline extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ExperienceItem(experienceModel: experiences[i]),
-
+                  ExperienceItem(
+                    experienceModel: experiences[i],
+                    width: cardWidth,
+                    height: cardHeight,
+                    padding: cardPadding,
+                    borderRadius: cardBorderRadius,
+                  ),
                   SizedBox(
                     width: 100,
-                    child: DottedLine(dashColor: context.colorScheme.primary),
+                    child: DottedLine(dashColor: lineColor ?? context.colorScheme.primary),
                   ),
                 ],
               ),
@@ -62,29 +81,36 @@ class DesktopExperiencesTimeline extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:
-                    isArabic
-                        ? [
-                          ExperienceItem(experienceModel: experiences[i]),
-
-                          SizedBox(
-                            width: 100,
-                            child: DottedLine(
-                              dashColor: context.colorScheme.primary,
-                            ),
-                          ),
-                        ]
-                        : [
-                          SizedBox(
-                            width: 100,
-                            child: DottedLine(
-                              dashColor: context.colorScheme.primary,
-                            ),
-                          ),
-                          ExperienceItem(experienceModel: experiences[i]),
-                        ],
+                children: isArabic
+                    ? [
+                        ExperienceItem(
+                          experienceModel: experiences[i],
+                          width: cardWidth,
+                          height: cardHeight,
+                          padding: cardPadding,
+                          borderRadius: cardBorderRadius,
+                        ),
+                        SizedBox(
+                          width: 100,
+                          child: DottedLine(dashColor: lineColor ?? context.colorScheme.primary),
+                        ),
+                      ]
+                    : [
+                        SizedBox(
+                          width: 100,
+                          child: DottedLine(dashColor: lineColor ?? context.colorScheme.primary),
+                        ),
+                        ExperienceItem(
+                          experienceModel: experiences[i],
+                          width: cardWidth,
+                          height: cardHeight,
+                          padding: cardPadding,
+                          borderRadius: cardBorderRadius,
+                        ),
+                      ],
               ),
             ),
+          // Point indicator
           Positioned(
             top: i * expScaleFactor + expPonitFactor,
             left: 0,
@@ -95,14 +121,14 @@ class DesktopExperiencesTimeline extends StatelessWidget {
               height: expPointsSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: context.colorScheme.onSurface.withValues(alpha: 0.24),
+                color: (lineColor ?? context.colorScheme.onSurface).withValues(alpha: 0.24),
               ),
               child: Container(
                 width: expPointsSize / 2,
                 height: expPointsSize / 2,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: context.colorScheme.onSurface.withValues(alpha: 0.8),
+                  color: lineColor ?? context.colorScheme.primary,
                 ),
               ),
             ),

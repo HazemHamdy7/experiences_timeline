@@ -1,36 +1,25 @@
-import 'package:flutter/material.dart'; // لاستيراد الألوان
+import 'package:flutter/material.dart';
 
 class ExperienceModel {
   final String title;
   final String company;
   final String description;
   final String date;
-  final Color color; // خاصية جديدة للألوان
+  final Color color;
+  final TextStyle? titleStyle;
+  final TextStyle? companyStyle;
+  final TextStyle? descriptionStyle;
+  final TextStyle? dateStyle;
 
   ExperienceModel({
     required this.title,
     required this.company,
     required this.description,
     required this.date,
-    required this.color, // تعيين اللون
+    required this.color,
+    this.titleStyle,
+    this.companyStyle,
+    this.descriptionStyle,
+    this.dateStyle,
   });
 }
-
-// تعريف قائمة الـ experiences
-final List<ExperienceModel> experiences = [
-  ExperienceModel(
-    title: 'Title 1',
-    company: 'Company 1',
-    description: 'Description 1',
-    date: '2023-01-01',
-    color: Colors.blue,
-  ),
-  ExperienceModel(
-    title: 'Title 2',
-    company: 'Company 2',
-    description: "Description 2",
-    date: '2023-02-01',
-    color: Colors.green,
-  ),
-  // أضف باقي العناصر هنا
-];
