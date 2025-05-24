@@ -1,18 +1,19 @@
 # Experiences Timeline
 
-A Flutter package for creating interactive experiences timeline. This package allows developers to easily create and customize timelines with different UI components and styles.
+A customizable Flutter widget for displaying experiences in a timeline format, supporting both desktop and mobile layouts.
 
 ## Features
 
-- Customizable timeline design
-- Support for both desktop and mobile layouts
-- Easy integration with Flutter apps
-- Supports dynamic data updates
+- Responsive layout for both desktop and mobile views
+- Customizable timeline appearance
+- Support for RTL languages
+- Customizable card styles
+- Configurable dotted lines and timeline indicators
 
 ## Installation
 
-To use this package, add it to your `pubspec.yaml`:
+Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  experiences_timeline: ^0.0.1
+  experiences_timeline: ^1.0.0

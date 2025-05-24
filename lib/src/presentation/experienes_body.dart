@@ -15,6 +15,10 @@ class ExperiencesTimeline extends StatelessWidget {
   final BorderRadius? cardBorderRadius;
   final Color? lineColor;
   final Color? backgroundColor;
+  final double? dotSize;
+  final double? dotSpacing;
+  final double? lineWidth;
+  final bool showDottedLine;
 
   const ExperiencesTimeline({
     super.key,
@@ -27,6 +31,10 @@ class ExperiencesTimeline extends StatelessWidget {
     this.cardBorderRadius,
     this.lineColor,
     this.backgroundColor,
+    this.dotSize = 2.0,
+    this.dotSpacing = 4.0,
+    this.lineWidth = 1.0,
+    this.showDottedLine = true,
   });
 
   @override

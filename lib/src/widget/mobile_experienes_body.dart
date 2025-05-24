@@ -11,6 +11,10 @@ class MobileExperiencesTimeline extends StatelessWidget {
   final EdgeInsets? cardPadding;
   final BorderRadius? cardBorderRadius;
   final Color? lineColor;
+  final double? dotSize;
+  final double? dotSpacing;
+  final double? lineWidth;
+  final bool showDottedLine;
 
   const MobileExperiencesTimeline({
     super.key,
@@ -20,6 +24,10 @@ class MobileExperiencesTimeline extends StatelessWidget {
     this.cardPadding,
     this.cardBorderRadius,
     this.lineColor,
+    this.dotSize = 2.0,
+    this.dotSpacing = 4.0,
+    this.lineWidth = 1.0,
+    this.showDottedLine = true,
   });
 
   @override
@@ -29,15 +37,18 @@ class MobileExperiencesTimeline extends StatelessWidget {
       shrinkWrap: true,
       padding: const EdgeInsets.all(16),
       itemCount: experiences.length,
-      separatorBuilder: (context, index) => Center(
+      separatorBuilder: (context, index) => showDottedLine ? Center(
         child: SizedBox(
           height: 60,
           child: DottedLine(
             dashColor: lineColor ?? context.colorScheme.primary,
             direction: Axis.vertical,
+            lineThickness: lineWidth ?? 1.0,
+            dashLength: dotSize ?? 2.0,
+            dashGapLength: dotSpacing ?? 4.0,
           ),
         ),
-      ),
+      ) : const SizedBox(height: 60),
       itemBuilder: (context, index) => ExperienceItem(
         experienceModel: experiences[index],
         width: cardWidth,
