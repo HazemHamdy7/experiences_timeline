@@ -34,18 +34,41 @@ class ExperienceItem extends StatelessWidget {
           children: [
             Text(
               experienceModel.title,
-              style: experienceModel.titleStyle ?? TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: context.colorScheme.onSurface,
-              ),
+              style:
+                  experienceModel.titleStyle ??
+                  TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: context.colorScheme.onSurface,
+                  ),
               textAlign: isArabic ? TextAlign.right : TextAlign.left,
             ),
             Expanded(
               child: Column(
                 children: [
-                  ExperienceDescriptionItem(
-                    experiencesModel: experienceModel,
+                  ExperienceDescriptionItem(experiencesModel: experienceModel),
+
+                  Text(
+                    experienceModel.date,
+                    style:
+                        experienceModel.dateStyle ??
+                        TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: context.colorScheme.onSurface,
+                        ),
+                    textAlign: isArabic ? TextAlign.right : TextAlign.left,
+                  ),
+                  Text(
+                    experienceModel.company,
+                    style:
+                        experienceModel.companyStyle ??
+                        TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: context.colorScheme.onSurface,
+                        ),
+                    textAlign: isArabic ? TextAlign.right : TextAlign.left,
                   ),
                 ],
               ),
